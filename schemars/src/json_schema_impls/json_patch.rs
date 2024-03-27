@@ -1,4 +1,4 @@
-use crate::gen::SchemaGenerator;
+use crate::{gen::SchemaGenerator, Map, Set};
 use crate::schema::*;
 use crate::JsonSchema;
 use std::borrow::Cow;
@@ -48,7 +48,12 @@ impl JsonSchema for PatchOperation {
                     map.insert("value".to_owned(), gen.subschema_for::<serde_json::Value>());
                     map
                 },
-                required: vec!["op".to_owned(), "path".to_owned()],
+                required: {
+                    let mut required = Set::new();
+                    required.insert("op".to_string());
+                    required.insert("path".to_string());
+                    required
+                },
                 ..Default::default()
             })),
             ..Default::default()
