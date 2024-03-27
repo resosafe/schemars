@@ -13,7 +13,7 @@ impl JsonSchema for Patch {
         Cow::Borrowed("json_patch::Patch")
     }
 
-    fn json_schema(_: &mut SchemaGenerator) -> Schema {
+    fn json_schema(gen: &mut SchemaGenerator) -> Schema {
         SchemaObject {
             instance_type: Some(InstanceType::Array.into()),
             array: Some(Box::new(ArrayValidation {
@@ -36,7 +36,7 @@ impl JsonSchema for PatchOperation {
         Cow::Borrowed("json_patch::PatchOperation")
     }
 
-    fn json_schema(_: &mut SchemaGenerator) -> Schema {
+    fn json_schema(gen: &mut SchemaGenerator) -> Schema {
         SchemaObject {
             instance_type: Some(InstanceType::Object.into()),
             object: Some(Box::new(ObjectValidation {
