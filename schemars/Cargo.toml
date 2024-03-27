@@ -66,6 +66,7 @@ raw_value = ["serde_json/raw_value"]
 # `bigdecimal` feature without version suffix is included only for back-compat - will be removed in a later version
 bigdecimal = ["bigdecimal03"]
 
+json_patch = ["json-patch"]
 ui_test = []
 
 [[test]]
