@@ -129,9 +129,9 @@ required-features = ["semver"]
 name = "decimal"
 required-features = ["rust_decimal", "bigdecimal03", "bigdecimal04"]
 
-[[test]]
-name = "json_patch"
-required-features = ["json-patch"]
+# [[test]]
+# name = "json_patch"
+# required-features = ["json-patch"]
 
 [package.metadata.docs.rs]
 all-features = true
