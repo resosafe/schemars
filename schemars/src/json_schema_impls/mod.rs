@@ -80,6 +80,9 @@ mod smallvec;
 mod smol_str;
 #[cfg(feature = "json_patch")]
 mod json_patch;
+#[cfg(feature = "serde_with")]
+mod serde_with;
+
 mod time;
 mod tuple;
 #[cfg(feature = "url")]
