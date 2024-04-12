@@ -9,15 +9,30 @@ impl JsonSchema for Value {
     no_ref_schema!();
 
     fn schema_name() -> String {
-        "AnyValue".to_owned()
+        "Json Value".to_owned()
     }
 
     fn schema_id() -> Cow<'static, str> {
-        Cow::Borrowed("AnyValue")
+        Cow::Borrowed("JsonValue")
     }
 
     fn json_schema(_: &mut SchemaGenerator) -> Schema {
-        Schema::Bool(true)
+        SchemaObject {
+            instance_type: Some(SingleOrVec::Vec(
+            vec![
+                InstanceType::Null,
+                InstanceType::Boolean,
+                InstanceType::Number,
+                InstanceType::String,
+                InstanceType::Array,
+                InstanceType::Object,
+            ]
+            .into_iter()
+            .map(InstanceType::from)
+            .collect(),
+        )),
+            ..Default::default()
+        }.into()
     }
 }
 
@@ -43,5 +58,3 @@ impl JsonSchema for Number {
     }
 }
 
-#[cfg(feature = "raw_value")]
-forward_impl!(serde_json::value::RawValue => Value);
